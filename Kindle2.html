@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kindle 2 Dashboard</title>
+  <style>
+    body {
+      background: #000;
+      color: white;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      width: 100%;
+      max-width: 600px;
+    }
+    button {
+      background: #222;
+      color: white;
+      border: 1px solid #444;
+      border-radius: 10px;
+      padding: 1.2rem;
+      font-size: 1.2rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <h2>App Launchers</h2>
+
+  <div class="button-grid">
+    <button onclick="launchApp('YouTube')">YouTube</button>
+    <button onclick="launchApp('Spotify')">Spotify</button>
+    <button onclick="launchApp('Roblox')">Roblox</button>
+    <button onclick="launchApp('Terminal')">Terminal</button>
+    <button onclick="launchApp('System Settings')">Settings</button>
+    <button onclick="launchApp('Messages')">Messages</button>
+    <button onclick="launchApp('FaceTime')">FaceTime</button>
+    <button onclick="launchApp('Chrome')">Chrome</button>
+    <button onclick="launchApp('Rekordbox')">Rekordbox</button>
+    <button onclick="launchApp('Canva')">Canva</button>
+    <button onclick="launchApp('VLC')">VLC</button>
+    <button onclick="launchApp('AutoClicker')">AutoClicker</button>
+  </div>
+
+  <script>
+    function launchApp(appName) {
+      fetch(`http://localhost:7777/launch`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ app: appName })
+      });
+    }
+  </script>
+</body>
+</html>
